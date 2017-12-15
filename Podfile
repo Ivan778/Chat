@@ -7,6 +7,7 @@ target 'Chat' do
 
   pod 'SwiftSocket'
   pod 'MMLanScan'
+  pod 'NoChat', '~> 0.3'
 
   # Pods for Chat
 

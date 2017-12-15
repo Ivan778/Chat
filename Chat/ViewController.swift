@@ -21,7 +21,7 @@ class ViewController: UIViewController, MMLANScannerDelegate, UITableViewDelegat
     }
 
     public func lanScanDidFinishScanning(with status: MMLanScannerStatus) {
-        print(status)
+        
     }
 
     public func lanScanDidFindNewDevice(_ device: Device!) {
@@ -43,7 +43,7 @@ class ViewController: UIViewController, MMLANScannerDelegate, UITableViewDelegat
     }
     
     // MARK: - TableView delegate methods
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IPCell", for: indexPath)
         let row = indexPath.row
         
@@ -53,14 +53,17 @@ class ViewController: UIViewController, MMLANScannerDelegate, UITableViewDelegat
         return cell
     }
     
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devices.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
+    }
 
 }
 

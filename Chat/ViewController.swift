@@ -8,18 +8,59 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+import MMLanScan
 
+class ViewController: UIViewController, MMLANScannerDelegate, UITableViewDelegate, UITableViewDataSource {
+    var lanScanner: MMLANScanner!
+    var devices = [String]()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    public func lanScanDidFailedToScan() {
+        
+    }
+
+    public func lanScanDidFinishScanning(with status: MMLanScannerStatus) {
+        print(status)
+    }
+
+    public func lanScanDidFindNewDevice(_ device: Device!) {
+        devices.append(device.ipAddress)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
+    // My Mac IP = 192.168.1.108
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.lanScanner = MMLANScanner(delegate: self)
+        self.lanScanner.start()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: - TableView delegate methods
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IPCell", for: indexPath)
+        let row = indexPath.row
+        
+        let label = cell.viewWithTag(1000) as! UILabel
+        label.text = (devices[row])
+        
+        return cell
     }
-
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return devices.count
+    }
+    
 
 }
 

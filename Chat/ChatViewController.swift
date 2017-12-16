@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSocket
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -16,13 +17,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         setDoneOnKeyboard()
+        
+        
+        
     }
     
+    // MARK: - KeyboardToolbar customize methods
     func setDoneOnKeyboard() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
@@ -38,6 +43,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.endEditing(true)
     }
     
+    // MARK: - TableView delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }

@@ -42,6 +42,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C9125A51FE3F6EE009D1137 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2CC3B00A1FE3AF7400ACF36E /* AppDelegate.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		2C9125A61FE3F6FB009D1137 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2CC3B00E1FE3AF7400ACF36E /* Main.storyboard */,
+				2CC3B0131FE3AF7400ACF36E /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		2C9125A71FE3F70D009D1137 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2CC3B0111FE3AF7400ACF36E /* Assets.xcassets */,
+				2CC3B0161FE3AF7400ACF36E /* Info.plist */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		2C9125A81FE3F71F009D1137 /* UDPScanner */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UDPScanner;
+			sourceTree = "<group>";
+		};
 		2CBCF5061FE3C3130053469F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,12 +105,11 @@
 		2CC3B0091FE3AF7400ACF36E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				2C9125A81FE3F71F009D1137 /* UDPScanner */,
+				2C9125A71FE3F70D009D1137 /* Other */,
+				2C9125A61FE3F6FB009D1137 /* Storyboards */,
+				2C9125A51FE3F6EE009D1137 /* AppDelegate */,
 				2CBCF5061FE3C3130053469F /* ViewControllers */,
-				2CC3B00A1FE3AF7400ACF36E /* AppDelegate.swift */,
-				2CC3B00E1FE3AF7400ACF36E /* Main.storyboard */,
-				2CC3B0111FE3AF7400ACF36E /* Assets.xcassets */,
-				2CC3B0131FE3AF7400ACF36E /* LaunchScreen.storyboard */,
-				2CC3B0161FE3AF7400ACF36E /* Info.plist */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -193,11 +225,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Chat/Pods-Chat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/MMLanScan/MMLanScan.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMLanScan.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 			);

@@ -7,32 +7,75 @@
 //
 
 import UIKit
-import MMLanScan
 import SwiftSocket
+import CocoaAsyncSocket
 
-class ScanningNetworkViewController: UIViewController, MMLANScannerDelegate, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var tableView: UITableView!
+class ScanningNetworkViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GCDAsyncSocketDelegate {
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var message: UILabel!
     
-    var lanScanner: MMLANScanner!
     var devices = [String]()
+    var UDPSocket: GCDAsyncUdpSocket!
+    var TCPSocket: GCDAsyncSocket!
+    var nSocket: GCDAsyncSocket!
 
-    // My Mac IP = 192.168.1.108
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.lanScanner = MMLANScanner(delegate: self)
-        self.lanScanner.start()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        // Create a socket connect to www.apple.com and port at 80
-        let client = UDPClient(address: "192.168.1.108", port: 9110)
-        switch client.send(string: "Hello") {
-            case .success: print("Yeah!!!"); break
-            case .failure(let error): print(error); break
+        TCPSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
+    }
+    
+    @IBAction func clickedConnect(_ sender: Any) {
+        TCPSocket.readData(to: GCDAsyncSocket.crlfData(), withTimeout: 10, tag: 0)
+        do {
+            try TCPSocket.connect(toHost: textField.text!, onPort: 1234)
+        } catch {
+            print(error)
         }
+    }
+    
+    @IBAction func clickedAccept(_ sender: Any) {
+        TCPSocket.readData(to: GCDAsyncSocket.crlfData(), withTimeout: 10, tag: 0)
+        do {
+            try TCPSocket.accept(onPort: 1234)
+        } catch {
+            print(error)
+        }
+    }
+    @IBAction func clickedSend(_ sender: Any) {
+        print("Sending...")
+        let data = textField.text!.data(using: .utf8)
+        TCPSocket.write(data!, withTimeout: -1, tag: 0)
+    }
+    
+    func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+        TCPSocket.readData(withTimeout: -1, tag: 0)
+        print("Hello")
+    }
+    
+    func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+        sock.readData(withTimeout: -1, tag: 0)
+        message.text = String(data: data, encoding: String.Encoding.utf8) as String!
+        print("yeah")
+    }
+    
+    func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
+        message.text = newSocket.connectedHost
         
+        TCPSocket = newSocket
+        
+        //let data = "Hello from server".data(using: .utf8)
+        //TCPSocket.write(data!, withTimeout: -1, tag: 0)
+        
+        TCPSocket.readData(withTimeout: -1, tag: 0)
+    }
+    
+    // MARK: - UDP delegate methods
+    func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
+        let str = NSString(data: data as Data, encoding: String.Encoding.ascii.rawValue)
+        if let text = str {
+            print(text)
+        }
     }
     
     // MARK: - TableView delegate methods
@@ -58,22 +101,6 @@ class ScanningNetworkViewController: UIViewController, MMLANScannerDelegate, UIT
         tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
         
         self.performSegue(withIdentifier: "GoChattingSegue", sender: self)
-    }
-    
-    // MARK: - MMLanScan delegate methods
-    public func lanScanDidFailedToScan() {
-        
-    }
-    
-    public func lanScanDidFinishScanning(with status: MMLanScannerStatus) {
-        
-    }
-    
-    public func lanScanDidFindNewDevice(_ device: Device!) {
-        devices.append(device.ipAddress)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
 
 }

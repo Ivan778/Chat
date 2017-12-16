@@ -7,6 +7,7 @@ target 'Chat' do
 
   pod 'SwiftSocket'
   pod 'MMLanScan'
+  pod 'CocoaAsyncSocket'
 
   # Pods for Chat
 

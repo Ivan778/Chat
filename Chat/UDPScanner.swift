@@ -17,7 +17,7 @@ import CocoaAsyncSocket
 class UDPScanner: NSObject, GCDAsyncUdpSocketDelegate {
     var socket: GCDAsyncUdpSocket!
     let password = "ChatAppByIvanushka7798".data(using: .utf8)
-    let port = 50000 as UInt16
+    let port = 8097 as UInt16
     
     var count = 0
     
@@ -31,8 +31,8 @@ class UDPScanner: NSObject, GCDAsyncUdpSocketDelegate {
         socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: DispatchQueue.main)
         do {
             try socket.bind(toPort: port)
-            try socket.joinMulticastGroup("239.0.0.0")
-            //try socket.enableBroadcast(true)
+            socket.setPreferIPv4()
+            try socket.enableBroadcast(true)
             try socket.beginReceiving()
         } catch {
             print(error)
@@ -40,7 +40,7 @@ class UDPScanner: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func sayHelloToOtherDevices() {
-        socket.send(password!, toHost: "239.0.0.0", port: port, withTimeout: 5, tag: 0)
+        socket.send(password!, toHost: "255.255.255.255", port: port, withTimeout: 5, tag: 0)
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {

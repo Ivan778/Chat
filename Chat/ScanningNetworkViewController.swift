@@ -24,7 +24,7 @@ class ScanningNetworkViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         
         scanner = UDPScanner(delegate: self)
-        scanner.sayHelloToOtherDevices()
+        //scanner.sayHelloToOtherDevices()
         
         TCPSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
     }

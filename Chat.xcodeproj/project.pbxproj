@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C7E1F0E1FE6B86000677E84 /* UDPScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E1F0D1FE6B86000677E84 /* UDPScanner.swift */; };
 		2CBCF5051FE3C2DE0053469F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBCF5041FE3C2DE0053469F /* ChatViewController.swift */; };
 		2CC3B00B1FE3AF7400ACF36E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3B00A1FE3AF7400ACF36E /* AppDelegate.swift */; };
 		2CC3B00D1FE3AF7400ACF36E /* ScanningNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3B00C1FE3AF7400ACF36E /* ScanningNetworkViewController.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		024440F6F5A16E0CD2BFDB0D /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D5736318AF170DA3F17199C /* Pods-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.release.xcconfig"; sourceTree = "<group>"; };
+		2C7E1F0D1FE6B86000677E84 /* UDPScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPScanner.swift; sourceTree = "<group>"; };
 		2CBCF5041FE3C2DE0053469F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2CC3B0071FE3AF7400ACF36E /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC3B00A1FE3AF7400ACF36E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		2C9125A81FE3F71F009D1137 /* UDPScanner */ = {
 			isa = PBXGroup;
 			children = (
+				2C7E1F0D1FE6B86000677E84 /* UDPScanner.swift */,
 			);
 			name = UDPScanner;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				2CC3B00D1FE3AF7400ACF36E /* ScanningNetworkViewController.swift in Sources */,
 				2CBCF5051FE3C2DE0053469F /* ChatViewController.swift in Sources */,
+				2C7E1F0E1FE6B86000677E84 /* UDPScanner.swift in Sources */,
 				2CC3B00B1FE3AF7400ACF36E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

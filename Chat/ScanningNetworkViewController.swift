@@ -10,69 +10,42 @@ import UIKit
 import SwiftSocket
 import CocoaAsyncSocket
 
-class ScanningNetworkViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GCDAsyncSocketDelegate, UDPScannerDelegate {
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var message: UILabel!
+class ScanningNetworkViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UserScannerDelegate, SenderDelegate {
+    @IBOutlet weak var tableView: UITableView!
     
+    var userScanner: UserScanner!
     var devices = [String]()
-    var TCPSocket: GCDAsyncSocket!
-    var nSocket: GCDAsyncSocket!
     
-    var scanner: UDPScanner!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scanner = UDPScanner(delegate: self)
-        //scanner.sayHelloToOtherDevices()
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        TCPSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
-    }
-    
-    func foundNewUser(userAddress: String) {
-        message.text = userAddress
-    }
-    
-    @IBAction func clickedConnect(_ sender: Any) {
-        TCPSocket.readData(to: GCDAsyncSocket.crlfData(), withTimeout: 10, tag: 0)
-        do {
-            try TCPSocket.connect(toHost: textField.text!, onPort: 5678)
-        } catch {
-            print(error)
+        userScanner = UserScanner(delegate: self)
+        let sender = Sender(delegate: self)
+        if let IP = IPGetter.getWiFiAddress() {
+            sender.sendIP(IP: IP)
         }
-    }
-    
-    @IBAction func clickedAccept(_ sender: Any) {
-        TCPSocket.readData(to: GCDAsyncSocket.crlfData(), withTimeout: 10, tag: 0)
-        do {
-            try TCPSocket.accept(onPort: 5678)
-        } catch {
-            print(error)
-        }
-    }
-    @IBAction func clickedSend(_ sender: Any) {
-        print("Sending...")
-        //let data = textField.text!.data(using: .utf8)
-        //TCPSocket.write(data!, withTimeout: -1, tag: 0)
-        scanner.sayHelloToOtherDevices()
-    }
-    
-    func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        TCPSocket.readData(withTimeout: -1, tag: 0)
-        print("Hello")
-    }
-    
-    func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        sock.readData(withTimeout: -1, tag: 0)
-        message.text = String(data: data, encoding: String.Encoding.utf8) as String!
-        print("yeah")
-    }
-    
-    func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
-        message.text = newSocket.connectedHost
         
-        TCPSocket = newSocket
-        TCPSocket.readData(withTimeout: -1, tag: 0)
+        _ = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.scanForUsers), userInfo: nil, repeats: true)
+    }
+    
+    func scanForUsers() {
+        userScanner.getOnlineUsersIPs()
+    }
+    
+    // MARK: - Sender delegate methods
+    func didNotSendData() {
+        print("Didn't send data!!!")
+    }
+    
+    // MARK: - UserScanner delegate methods
+    func didGetUsersIPs(IPs: [String]) {
+        devices = IPs
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - TableView delegate methods
@@ -92,12 +65,6 @@ class ScanningNetworkViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devices.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
-        
-        self.performSegue(withIdentifier: "GoChattingSegue", sender: self)
     }
 
 }

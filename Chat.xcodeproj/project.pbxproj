@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C7E1F0E1FE6B86000677E84 /* UDPScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E1F0D1FE6B86000677E84 /* UDPScanner.swift */; };
 		2CBCF5051FE3C2DE0053469F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBCF5041FE3C2DE0053469F /* ChatViewController.swift */; };
 		2CC3B00B1FE3AF7400ACF36E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3B00A1FE3AF7400ACF36E /* AppDelegate.swift */; };
 		2CC3B00D1FE3AF7400ACF36E /* ScanningNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3B00C1FE3AF7400ACF36E /* ScanningNetworkViewController.swift */; };
 		2CC3B0101FE3AF7400ACF36E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC3B00E1FE3AF7400ACF36E /* Main.storyboard */; };
 		2CC3B0121FE3AF7400ACF36E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC3B0111FE3AF7400ACF36E /* Assets.xcassets */; };
 		2CC3B0151FE3AF7400ACF36E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC3B0131FE3AF7400ACF36E /* LaunchScreen.storyboard */; };
+		2CF86AE91FEA5B5B00813782 /* UserScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86AE81FEA5B5B00813782 /* UserScanner.swift */; };
+		2CF86AEC1FEA5CBD00813782 /* wef.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86AEB1FEA5CBD00813782 /* wef.m */; };
+		2CF86AEF1FEA5E4300813782 /* IPGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86AEE1FEA5E4300813782 /* IPGetter.swift */; };
+		2CF86AF21FEA64FA00813782 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF86AF11FEA64FA00813782 /* Sender.swift */; };
 		4CB2AE8321E8FA595946210D /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024440F6F5A16E0CD2BFDB0D /* Pods_Chat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		024440F6F5A16E0CD2BFDB0D /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D5736318AF170DA3F17199C /* Pods-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.release.xcconfig"; sourceTree = "<group>"; };
-		2C7E1F0D1FE6B86000677E84 /* UDPScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPScanner.swift; sourceTree = "<group>"; };
 		2CBCF5041FE3C2DE0053469F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2CC3B0071FE3AF7400ACF36E /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC3B00A1FE3AF7400ACF36E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +31,11 @@
 		2CC3B0111FE3AF7400ACF36E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC3B0141FE3AF7400ACF36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CC3B0161FE3AF7400ACF36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CF86AE81FEA5B5B00813782 /* UserScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserScanner.swift; sourceTree = "<group>"; };
+		2CF86AEA1FEA5CBD00813782 /* Chat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chat-Bridging-Header.h"; sourceTree = "<group>"; };
+		2CF86AEB1FEA5CBD00813782 /* wef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wef.m; sourceTree = "<group>"; };
+		2CF86AEE1FEA5E4300813782 /* IPGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPGetter.swift; sourceTree = "<group>"; };
+		2CF86AF11FEA64FA00813782 /* Sender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		A5F7A1ADB61B7CBFF9EFF889 /* Pods-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,14 +77,6 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
-		2C9125A81FE3F71F009D1137 /* UDPScanner */ = {
-			isa = PBXGroup;
-			children = (
-				2C7E1F0D1FE6B86000677E84 /* UDPScanner.swift */,
-			);
-			name = UDPScanner;
-			sourceTree = "<group>";
-		};
 		2CBCF5061FE3C3130053469F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,13 +107,41 @@
 		2CC3B0091FE3AF7400ACF36E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				2C9125A81FE3F71F009D1137 /* UDPScanner */,
+				2CF86AF01FEA64E800813782 /* Sender */,
+				2CF86AED1FEA5E3200813782 /* IPGetter */,
+				2CF86AE71FEA5B2E00813782 /* UserScanner */,
 				2C9125A71FE3F70D009D1137 /* Other */,
 				2C9125A61FE3F6FB009D1137 /* Storyboards */,
 				2C9125A51FE3F6EE009D1137 /* AppDelegate */,
 				2CBCF5061FE3C3130053469F /* ViewControllers */,
+				2CF86AEB1FEA5CBD00813782 /* wef.m */,
+				2CF86AEA1FEA5CBD00813782 /* Chat-Bridging-Header.h */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		2CF86AE71FEA5B2E00813782 /* UserScanner */ = {
+			isa = PBXGroup;
+			children = (
+				2CF86AE81FEA5B5B00813782 /* UserScanner.swift */,
+			);
+			name = UserScanner;
+			sourceTree = "<group>";
+		};
+		2CF86AED1FEA5E3200813782 /* IPGetter */ = {
+			isa = PBXGroup;
+			children = (
+				2CF86AEE1FEA5E4300813782 /* IPGetter.swift */,
+			);
+			name = IPGetter;
+			sourceTree = "<group>";
+		};
+		2CF86AF01FEA64E800813782 /* Sender */ = {
+			isa = PBXGroup;
+			children = (
+				2CF86AF11FEA64FA00813782 /* Sender.swift */,
+			);
+			name = Sender;
 			sourceTree = "<group>";
 		};
 		75FC4411B2FA6856EB0749DB /* Pods */ = {
@@ -170,7 +197,13 @@
 					2CC3B0061FE3AF7400ACF36E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = JXCL7H2Z3W;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -269,8 +302,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC3B00D1FE3AF7400ACF36E /* ScanningNetworkViewController.swift in Sources */,
+				2CF86AF21FEA64FA00813782 /* Sender.swift in Sources */,
+				2CF86AE91FEA5B5B00813782 /* UserScanner.swift in Sources */,
 				2CBCF5051FE3C2DE0053469F /* ChatViewController.swift in Sources */,
-				2C7E1F0E1FE6B86000677E84 /* UDPScanner.swift in Sources */,
+				2CF86AEF1FEA5E4300813782 /* IPGetter.swift in Sources */,
+				2CF86AEC1FEA5CBD00813782 /* wef.m in Sources */,
 				2CC3B00B1FE3AF7400ACF36E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,12 +429,16 @@
 			baseConfigurationReference = A5F7A1ADB61B7CBFF9EFF889 /* Pods-Chat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JXCL7H2Z3W;
 				INFOPLIST_FILE = Chat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.Chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Chat/Chat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -408,12 +448,15 @@
 			baseConfigurationReference = 0D5736318AF170DA3F17199C /* Pods-Chat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JXCL7H2Z3W;
 				INFOPLIST_FILE = Chat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.Chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Chat/Chat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

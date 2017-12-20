@@ -36,6 +36,7 @@
 		2CF86AEB1FEA5CBD00813782 /* wef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wef.m; sourceTree = "<group>"; };
 		2CF86AEE1FEA5E4300813782 /* IPGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPGetter.swift; sourceTree = "<group>"; };
 		2CF86AF11FEA64FA00813782 /* Sender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		2CF86AF31FEAA04A00813782 /* Chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat.entitlements; sourceTree = "<group>"; };
 		A5F7A1ADB61B7CBFF9EFF889 /* Pods-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +108,7 @@
 		2CC3B0091FE3AF7400ACF36E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				2CF86AF31FEAA04A00813782 /* Chat.entitlements */,
 				2CF86AF01FEA64E800813782 /* Sender */,
 				2CF86AED1FEA5E3200813782 /* IPGetter */,
 				2CF86AE71FEA5B2E00813782 /* UserScanner */,
@@ -202,6 +204,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};

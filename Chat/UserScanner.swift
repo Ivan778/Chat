@@ -14,7 +14,7 @@ protocol UserScannerDelegate {
 }
 
 class UserScanner {
-    let host = "localhost"
+    let host = "192.168.1.6"
     let port: String = "8082"
     
     var delegate: UserScannerDelegate!
@@ -28,11 +28,19 @@ class UserScanner {
         let url = URL(string: URLString)
         
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            let str = String(data: data!, encoding: .utf8)!
-            var IPs = str.components(separatedBy: "\n")
-            IPs.remove(at: 0)
+            if error == nil {
+                let str = String(data: data!, encoding: .utf8)
+                
+                if let s = str {
+                    var IPs = s.components(separatedBy: "\n")
+                    IPs.remove(at: 0)
+                    
+                    self.delegate.didGetUsersIPs(IPs: IPs)
+                } else {
+                    self.delegate.didGetUsersIPs(IPs: [String]())
+                }
+            }
             
-            self.delegate.didGetUsersIPs(IPs: IPs)
         }
         task.resume()
     }

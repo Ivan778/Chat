@@ -31,6 +31,7 @@ class ScanningNetworkViewController: UIViewController, UITableViewDelegate, UITa
     var sender: Sender!
     var devices = [String]()
     var selectedRow = 0
+    var selIP = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,9 +61,9 @@ class ScanningNetworkViewController: UIViewController, UITableViewDelegate, UITa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoChattingSegue" {
-            let cVC = segue.destination as! ChatViewController
+            var cVC = segue.destination as! ChatViewController
             if selectedRow >= 0 {
-                cVC.sendToIP = devices[selectedRow]
+                cVC.sendToIP = selIP
                 TCPsocket.disconnect()
             }
         }
@@ -74,10 +75,6 @@ class ScanningNetworkViewController: UIViewController, UITableViewDelegate, UITa
         } catch {
             print(error)
         }
-    }
-    
-    @IBAction func clickedSend(_ sender: Any) {
-        self.sender.sendMessage(message: "Hello, World!", to: IPGetter.getWiFiAddress()!, from: IPGetter.getWiFiAddress()!)
     }
     
     func scanForUsers() {
@@ -146,8 +143,10 @@ class ScanningNetworkViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "GoChattingSegue", sender: self)
         selectedRow = indexPath.row
+        selIP = (tableView.cellForRow(at: indexPath)?.viewWithTag(1000) as! UILabel).text!
+        print(selIP)
         DispatchQueue.main.async {
-            self.tableView.deselectRow(at: indexPath, animated: true)
+            //self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 

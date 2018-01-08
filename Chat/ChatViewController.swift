@@ -18,7 +18,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     let port: UInt16 = 8081
     
     var sender: Sender!
-    var sendToIP: String!
+    var sendToIP: String?
     var messages = [String]()
     
     override func viewDidLoad() {
@@ -49,7 +49,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            sender.sendMessage(message: textField.text!, to: sendToIP, from: IPGetter.getWiFiAddress()!)
+            sender.sendMessage(message: textField.text!, to: sendToIP!, from: IPGetter.getWiFiAddress()!)
         }
         
         return true
@@ -58,6 +58,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillDisappear(_ animated: Bool) {
         TCPsocket.disconnect()
         socketSaved.disconnect()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        do {
+            try TCPsocket.accept(onPort: port)
+            socketSaved = TCPsocket
+        } catch {
+            print(error)
+        }
     }
     
     // MARK: - Sender delegate methods
